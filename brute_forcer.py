@@ -21,8 +21,10 @@ EFFICIENCY:
 '''
 
 
-# TODO: Add the ability to log successful attempts by utilizing timestamps and chat logs.
-# ^^ this will need the program to log all attempts and timestamps to a file.
+# TODO:
+# 1. Add (optional) arguments. Make sure they don't interfere with eachother though. E.g., digit count specification, file reading, interval speed
+# 2. Add a killswitch hotkey.
+# 3. Maybe add logging correct codes (pair with chat logs using timestamps).
 
 
 # Imports
@@ -55,9 +57,25 @@ enter_button = (905, 505) # Coordinates of the enter button
 def move_to(x, y):
     user32.SetCursorPos(x, y)
 
-test_code = "1234"
+# Simulate a full mouse click
+def click():
+    user32.mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+    user32.mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
-for num in list(test_code):
-    x = digits[num][0]
-    y = digits[num][1]
+def click_slot(x, y):
     move_to(x, y)
+    click()
+
+code = "1234" # code for testing
+
+def main():
+    time.sleep(3)
+    for num in list(code):
+        x = digits[num][0]
+        y = digits[num][1]
+        click_slot(x, y)
+        time.sleep(0.25)
+    click_slot(enter_button[0], enter_button[1])
+
+if __name__ == "__main__":
+    main()
