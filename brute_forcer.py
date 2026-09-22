@@ -15,3 +15,18 @@ ADDITIONAL INFO:
 - Inputs are based on those coordinates paired with a click (which is the actual automation part).
 - Once a desired code is inputted, the program will map to the "ok" button and click to enter the code.
 '''
+
+# Digits mapped to coordinates on screen
+# Supports a 1920x1080 fullscreen-ed minecraft
+digits = {
+    '0': (965, 505),
+    '1': (905, 335),
+    '2': (965, 335),
+    '3': (1015, 335),
+    '4': (905, 395),
+    '5': (965, 395),
+    '6': (1015, 395),
+    '7': (905, 445),
+    '8': (965, 445),
+    '9': (1015, 445),
+}
