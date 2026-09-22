@@ -20,11 +20,13 @@ EFFICIENCY:
 - No library overhead.
 '''
 
+# TODO: Add the ability to log successful attempts by utilizing timestamps and chat logs.
+# ^^ this will need the program to log all attempts and timestamps to a file.
+
 
 # Imports
 import ctypes
 import time
-
 
 
 # Digits mapped to coordinates on screen
