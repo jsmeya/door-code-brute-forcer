@@ -14,7 +14,18 @@ ADDITIONAL INFO:
 - Digits are mapped to pixel coordinates on a 1920x1080 monitor for a fullscreen minecraft application.
 - Inputs are based on those coordinates paired with a click (which is the actual automation part).
 - Once a desired code is inputted, the program will map to the "ok" button and click to enter the code.
+
+EFFICIENCY:
+- Ctypes is used to call the windows API directly.
+- No library overhead.
 '''
+
+
+# Imports
+import ctypes
+import time
+
+
 
 # Digits mapped to coordinates on screen
 # Supports a 1920x1080 fullscreen-ed minecraft
