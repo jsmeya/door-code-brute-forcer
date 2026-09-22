@@ -20,6 +20,7 @@ EFFICIENCY:
 - No library overhead.
 '''
 
+
 # TODO: Add the ability to log successful attempts by utilizing timestamps and chat logs.
 # ^^ this will need the program to log all attempts and timestamps to a file.
 
@@ -29,12 +30,8 @@ import ctypes
 import time
 
 user32 = ctypes.windll.user32
-SCREEN_W = user32.GetSystemMetrics(0)
-SCREEN_H = user32.GetSystemMetrics(1)
 
 # Bitmasks (hexadecimal)
-MOUSEEVENTF_MOVE = 0x0001 # Movement occured
-MOUSEEVENTF_ABSOLUTE = 0x0008
 MOUSEEVENTF_LEFTDOWN = 0x0002
 MOUSEEVENTF_LEFTUP = 0x0004
 
@@ -52,3 +49,15 @@ digits = {
     '8': (965, 445),
     '9': (1015, 445),
 }
+enter_button = (905, 505) # Coordinates of the enter button
+
+# Absolute is faster
+def move_to(x, y):
+    user32.SetCursorPos(x, y)
+
+test_code = "1234"
+
+for num in list(test_code):
+    x = digits[num][0]
+    y = digits[num][1]
+    move_to(x, y)
