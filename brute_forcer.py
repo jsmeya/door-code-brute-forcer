@@ -80,10 +80,10 @@ def main():
     delay_time = float(input("Enter a delay time in s: "))
 
     time.sleep(3) # Wait time for transition
-    
+
     for combo in product(digits, repeat=digit_count):
         click() # Click the door to open the code GUI
-        time.sleep(delay_time)
+        time.sleep(0.25)
         for num in combo:
             click_slot(*digits[num])
             time.sleep(delay_time)
