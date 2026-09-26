@@ -28,6 +28,7 @@ EFFICIENCY:
 
 
 # Imports
+from itertools import product
 import ctypes
 import time
 
@@ -53,6 +54,10 @@ digits = {
 }
 enter_button = (905, 505) # Coordinates of the enter button
 
+# Digit clamping
+min_digits = 1
+max_digits = 14
+
 # Absolute is faster
 def move_to(x, y):
     user32.SetCursorPos(x, y)
@@ -64,18 +69,23 @@ def click():
 
 def click_slot(x, y):
     move_to(x, y)
+    time.sleep(0.05)
     click()
 
-code = "1234" # code for testing
+def clamp(value, min_val, max_val):
+    return max(min_val, min(value, max_val))
 
 def main():
-    time.sleep(3)
-    for num in list(code):
-        x = digits[num][0]
-        y = digits[num][1]
-        click_slot(x, y)
-        time.sleep(0.25)
-    click_slot(enter_button[0], enter_button[1])
+    digit_count = clamp(int(input("Digit count: ")), min_digits, max_digits)
+    delay_time = float(input("Enter a delay time in s: "))
+
+    time.sleep(3) # Wait time for transition
+    click() # Click the door to open the code GUI
+    for combo in product(digits, repeat=digit_count):
+        for num in combo:
+            click_slot(*digits[num])
+            time.sleep(delay_time)
+        click_slot(*enter_button)
 
 if __name__ == "__main__":
     main()
