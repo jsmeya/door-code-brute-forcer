@@ -29,6 +29,7 @@ EFFICIENCY:
 
 # Imports
 from itertools import product
+from pathlib import Path
 import ctypes
 import time
 
@@ -75,20 +76,33 @@ def click_slot(x, y):
 def clamp(value, min_val, max_val):
     return max(min_val, min(value, max_val))
 
-def main():
-    digit_count = int(input("Digit count: "))
-    delay_time = float(input("Enter a delay time in s: "))
-
-    time.sleep(3) # Wait time for transition
-
-    for combo in product(digits, repeat=digit_count):
-        click() # Click the door to open the code GUI
-        time.sleep(0.25)
-        for num in combo:
-            click_slot(*digits[num])
-            time.sleep(delay_time)
-        click_slot(*enter_button)
+def macro(code, delay_time):
+    click() # Click the door to open the code GUI
+    time.sleep(0.25)
+    for num in code:
+        click_slot(*digits[num])
         time.sleep(delay_time)
+    click_slot(*enter_button)
+    time.sleep(delay_time)
+
+def main():
+    user_input = input("Enter a digit count (1-14) or a filename: ")
+    try:
+        delay_time = float(input("Enter a delay time in s: "))
+    except ValueError:
+        print("Please enter a valid delay time.")
+
+    print(f"Starting code macro. Move into fullscreen minecraft. Starting in 3 seconds...")
+    time.sleep(3) # Wait time for transition
+    if Path(user_input).is_file():
+        with open(user_input, "r", encoding="utf-8") as file:
+            for code in file:
+                macro(code.strip(), delay_time)
+    elif user_input.isdigit():
+        for code in product(digits, repeat=clamp(int(user_input), min_digits, max_digits)):
+            macro(code, delay_time)
+    else:
+        print("Invalid input.")
 
 if __name__ == "__main__":
     main()
