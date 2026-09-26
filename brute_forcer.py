@@ -76,16 +76,19 @@ def clamp(value, min_val, max_val):
     return max(min_val, min(value, max_val))
 
 def main():
-    digit_count = clamp(int(input("Digit count: ")), min_digits, max_digits)
+    digit_count = int(input("Digit count: "))
     delay_time = float(input("Enter a delay time in s: "))
 
     time.sleep(3) # Wait time for transition
-    click() # Click the door to open the code GUI
+    
     for combo in product(digits, repeat=digit_count):
+        click() # Click the door to open the code GUI
+        time.sleep(delay_time)
         for num in combo:
             click_slot(*digits[num])
             time.sleep(delay_time)
         click_slot(*enter_button)
+        time.sleep(delay_time)
 
 if __name__ == "__main__":
     main()
