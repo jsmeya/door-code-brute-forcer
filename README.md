@@ -2,7 +2,9 @@
 
 A mouse-automation macro for guessing base door codes on a Rust-inspired Minecraft server.
 <br>
+<br>
 The server name is intentionally omitted.
+<br>
 <br>
 Base door codes are accessed through an on-screen gui / keypad. Clicking any given slot will input a code, with options to enter or reset the code.
 This program maps that gui to pixel coordinates on a 1920x1080 fullscreen Minecraft window and inputs a given code.
@@ -10,6 +12,7 @@ This program maps that gui to pixel coordinates on a 1920x1080 fullscreen Minecr
 ## DISCLAIMER
 
 This is a personal project to automate a simple task on a server I used to play a lot. My goals for this project were to better understand how to automate input in Python.
+<br>
 <br>
 DO NOT use this code for any malicious purposes, or in any way that violates any server's rules or terms of service. Only run it against systems you have permission to test.
 
@@ -35,9 +38,13 @@ The program prompts you for the following:
 2. **A delay time in seconds** between clicks (tune to your server's tick rate
    and input handling).
 
+<br>
+
 **Example:**
 `Enter a digit count (1-14) or a filename: 4`
 `Enter a delay time in s: 0.25`
+
+<br>
 
 After you confirm, you have 3 seconds to switch into fullscreen Minecraft before
 the macro starts clicking. No killswitch yet, but you can alt+tab back into the terminal window and spam `Ctrl+C`.
@@ -50,5 +57,5 @@ the macro starts clicking. No killswitch yet, but you can alt+tab back into the 
 ## Notes / roadmap
 
 - Killswitch hotkey
-- Logging of successful codes (no direct communication w/ Minecraft, so this will need to read the chat message that displays a successful code)
+- Logging of successful codes (no direct communication w/ Minecraft, so this will need to read the chat message on screen that displays a successful code)
 - Support for all screen sizes
