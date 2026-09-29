@@ -59,3 +59,7 @@ the macro starts clicking. No killswitch yet, but you can alt+tab back into the 
 - Killswitch hotkey
 - Logging of successful codes (no direct communication w/ Minecraft, so this will need to read the chat message on screen that displays a successful code)
 - Support for all screen sizes
+
+## Known Issues
+
+- Latency from client-server communication doesn't cause total failure, but it definitely skips over some codes. If a player lags for pretty much any given amount of time, at least one code will be skipped. The impact itself is dependent on the "amount" of lag paired with the code digit length. My only guess to fix it would be adding a latency reader of some sort and checking that while inputting codes, but that may significantly slow down the process. In this case, the need for efficiency would outweigh the probability that any missed code(s) during a "lag window" are correct.
