@@ -22,7 +22,7 @@ DO NOT use this code for any malicious purposes, or in any way that violates any
 - Python 3.8+
 - Minecraft running **fullscreen at 1920x1080**
 
-May add automatic coordinate mapping later to support all screen resolutions.
+Plan to implement automatic coordinate mapping to support all screen resolutions.
 
 ## Usage
 
