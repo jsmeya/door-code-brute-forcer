@@ -3,7 +3,7 @@
 A mouse-automation macro for guessing base door codes on a Rust-inspired Minecraft server.
 <br>
 <br>
-The server name is intentionally omitted.
+The server in specific is intentionally omitted.
 <br>
 <br>
 Base door codes are accessed through an on-screen gui / keypad. Clicking any given slot will input a code, with options to enter or reset the code.
